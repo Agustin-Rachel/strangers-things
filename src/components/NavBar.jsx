@@ -20,7 +20,6 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
               <Link to="/">Home </Link>
               <Link to="/register">Register </Link>
               <Link to="/login">Login </Link>
-              <Link to="/posts">Posts </Link>
               <Link to="/profile">Profile</Link>
             </>
           )}
