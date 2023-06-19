@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "../api-adapters";
 import { Link } from "react-router-dom";
 
-const Posts = ({ }) => {
+const Posts = () => {
     const [allPosts, setAllPosts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
 

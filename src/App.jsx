@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { Routes, Route, Link } from "react-router-dom";
-import { Login, Posts, Profile, Register, NavBar } from "./components";
+import { Login, Posts, Profile, Register, NavBar, SinglePost } from "./components";
 import { fetchPosts } from './api-adapters';
 
 
@@ -34,6 +34,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Posts allPosts={allPosts} setAllPosts={setAllPosts} />} />
+        <Route path='/posts/:id' element={<SinglePost allPosts={allPosts} setAllPosts={setAllPosts} />} />
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/register' element={<Register setIsLogged={setIsLoggedIn} />} />
