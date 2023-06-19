@@ -27,11 +27,11 @@ const Register = (props) => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Username:
-                    <input>
+                    <input
                         type="text"
                         value={username}
                         onChange={(e) => {setUsername(e.target.value);}}
-                    </input>
+                    />
                 </label>
                 <label>
                     Password:
