@@ -23,7 +23,7 @@ const Register = (props) => {
       }
     return (
         <div>
-            <h2>Register</h2>
+            <h2>Register For A New Account:</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Username:
