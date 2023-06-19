@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { Routes, Route, Link } from "react-router-dom";
 import { Login, Posts, Profile, Register, NavBar } from "./components";
+import { fetchPosts } from './api-adapters';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -12,31 +15,25 @@ function App() {
     if (token) {
       setIsLoggedIn(true); 
     }
-  }, []);
 
-  const [allPosts, setAllPosts] = useState([]);
-
-  useEffect(() => {
-    async function fetchOurPosts() {
+    const fetchAllPosts = async () => {
       try {
-        const response = await fetch('https://strangers-things.herokuapp.com/api/2304-FTB-ET-WEB-FT/posts')
-
-        const translatedData = await response.json();
-        // console.log(translatedData)
-        setAllPosts(translatedData.data.posts);
+        const results = await fetchPosts();
+        setAllPosts(results);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }   
-      fetchOurPosts();
-  }, [])
+    };
+    fetchAllPosts();
+  }, []);
 
   return (
     <div>
       <h1>Welcome to Stranger's Things!</h1>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+
       <Routes>
-        <Route path='/' element={<Posts allPosts={allPosts} />} />
+        <Route path='/' element={<Posts allPosts={allPosts} setAllPosts={setAllPosts} />} />
         <Route path='/login' element={<Login />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/register' element={<Register setIsLogged={setIsLoggedIn} />} />
