@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+const COHORT_NAME = "2304-FTB-ET-WEB-FT";
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 export default function Login() {
   const [username, setUsername] = useState("");

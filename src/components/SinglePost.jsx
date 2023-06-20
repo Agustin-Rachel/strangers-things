@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { deletePost } from "../api-adapters";
 
 const SinglePost = ({ allPosts, setAllPosts }) => {
     const {id} = useParams();
