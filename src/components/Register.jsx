@@ -6,7 +6,9 @@ const Register = (props) => {
     const setIsLoggedIn = props.setIsLoggedIn
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const navigate= useNavigate()
+    const navigate= useNavigate();
+    const setMyUsername = props.setMyUsername;
+
     const handleSubmit = async(e)=>{e.preventDefault() 
        
         try {
@@ -15,12 +17,13 @@ const Register = (props) => {
     
           localStorage.setItem('token', result.token)
           setIsLoggedIn(true)
+          setMyUsername(username);
     
           navigate('/')
         } catch (error) {
           console.log(error)
         }
-      }
+      };
     return (
         <div>
             <h2>Register For A New Account:</h2>
